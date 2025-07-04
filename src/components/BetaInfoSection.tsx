@@ -1,97 +1,142 @@
 
+import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Info, Users, Zap, Clock } from 'lucide-react';
 
 const BetaInfoSection = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const section = document.getElementById('beta-info');
+    if (section) {
+      observer.observe(section);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="py-20 px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
-        <Card className="glass-card border-yellow-400/30">
-          <CardContent className="p-8 md:p-12 text-center">
-            {/* Beta Badge */}
-            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-yellow-400 to-orange-500 px-4 py-2 rounded-full mb-6">
-              <span className="text-2xl">🚧</span>
-              <span className="text-black font-bold">BETA VERSION</span>
-            </div>
+    <section id="beta-info" className="py-20 px-6 lg:px-8 relative overflow-hidden">
+      {/* Background Animation */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/3 left-1/6 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-1/3 right-1/6 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }}></div>
+      </div>
 
-            {/* Main Heading */}
-            <h2 className="text-3xl md:text-4xl font-orbitron font-bold text-white mb-6">
-              You're using NewU Beta – Limited Features
-            </h2>
+      <div className="max-w-4xl mx-auto relative z-10">
+        {/* Header */}
+        <div className={`text-center mb-12 transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          <div className="flex items-center justify-center space-x-3 mb-6">
+            <Badge className="bg-gradient-to-r from-teal-500 to-blue-500 text-white px-4 py-2 text-lg animate-pulse">
+              🚀 BETA VERSION
+            </Badge>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-orbitron font-bold gradient-text mb-4">
+            You're Using NewU Beta
+          </h2>
+          <p className="text-xl text-gray-300">
+            Experience the future of fitness technology
+          </p>
+        </div>
 
-            {/* Info Points */}
-            <div className="space-y-4 text-lg text-gray-300 mb-8">
-              <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span className="text-white text-sm">ℹ️</span>
-                </div>
-                <p className="text-left">
-                  We are migrating old users to this platform gradually
-                </p>
+        {/* Main Info Card */}
+        <Card className={`glass-card mb-8 transition-all duration-1000 delay-200 hover:scale-102 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          <CardContent className="p-8">
+            <div className="flex items-start space-x-4 mb-6">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-r from-teal-400 to-blue-500 flex items-center justify-center flex-shrink-0">
+                <Info className="w-6 h-6 text-white" />
               </div>
-
-              <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span className="text-white text-sm">🔓</span>
-                </div>
-                <p className="text-left">
-                  All features will be fully unlocked in final launch
+              <div>
+                <h3 className="text-2xl font-orbitron font-bold text-white mb-2">
+                  Limited Features Available
+                </h3>
+                <p className="text-gray-300 leading-relaxed">
+                  You're experiencing a preview version of NewU with core features enabled. 
+                  We're continuously improving and adding new capabilities based on your feedback.
                 </p>
-              </div>
-
-              <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span className="text-white text-sm">🎯</span>
-                </div>
-                <p className="text-left">
-                  Your feedback helps us improve the platform
-                </p>
-              </div>
-            </div>
-
-            {/* Current Beta Features */}
-            <div className="glass-card p-6 mb-8">
-              <h3 className="text-xl font-semibold text-white mb-4">
-                Currently Available in Beta:
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
-                <div className="flex items-center space-x-2">
-                  <span className="text-green-400">✓</span>
-                  <span className="text-gray-300">Food Scanning</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <span className="text-green-400">✓</span>
-                  <span className="text-gray-300">Bill Scanner</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <span className="text-green-400">✓</span>
-                  <span className="text-gray-300">Atman Chatbot</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <span className="text-yellow-400">⏳</span>
-                  <span className="text-gray-400">Gym Finder</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <span className="text-yellow-400">⏳</span>
-                  <span className="text-gray-400">Community</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <span className="text-yellow-400">⏳</span>
-                  <span className="text-gray-400">Full Calendar</span>
-                </div>
               </div>
             </div>
 
-            {/* Timeline */}
-            <div className="text-center">
-              <h3 className="text-xl font-semibold gradient-text mb-4">
-                Expected Full Launch: Q2 2024
-              </h3>
-              <p className="text-gray-400">
-                Stay tuned for updates and be the first to experience the complete NewU ecosystem!
-              </p>
+            {/* Feature Status Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+              {[
+                { name: 'AI Food Tracking', status: '✅ Active', color: 'text-green-400' },
+                { name: 'Bill Scanner', status: '✅ Active', color: 'text-green-400' },
+                { name: 'Gym Finder', status: '⏳ Coming Soon', color: 'text-yellow-400' },
+                { name: 'Community Features', status: '🔧 In Development', color: 'text-blue-400' }
+              ].map((feature, index) => (
+                <div 
+                  key={feature.name}
+                  className={`flex items-center justify-between p-3 rounded-lg bg-white/5 transition-all duration-300 delay-${index * 100} hover:bg-white/10 ${
+                    isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
+                  }`}
+                >
+                  <span className="text-gray-300">{feature.name}</span>
+                  <span className={feature.color}>{feature.status}</span>
+                </div>
+              ))}
             </div>
           </CardContent>
         </Card>
+
+        {/* Migration Info */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Card className={`glass-card transition-all duration-1000 delay-400 hover:scale-102 group ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}>
+            <CardContent className="p-6">
+              <div className="flex items-center space-x-3 mb-4">
+                <Users className="w-8 h-8 text-teal-400 group-hover:rotate-12 transition-transform duration-300" />
+                <h3 className="text-xl font-orbitron font-bold text-white">User Migration</h3>
+              </div>
+              <p className="text-gray-300">
+                We are gradually migrating existing users to this new platform. 
+                Your data and progress will be preserved during the transition.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className={`glass-card transition-all duration-1000 delay-600 hover:scale-102 group ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}>
+            <CardContent className="p-6">
+              <div className="flex items-center space-x-3 mb-4">
+                <Zap className="w-8 h-8 text-blue-400 group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="text-xl font-orbitron font-bold text-white">Full Launch</h3>
+              </div>
+              <p className="text-gray-300">
+                All features will be fully unlocked in the final launch. 
+                Beta users get exclusive early access and special pricing.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Timeline */}
+        <div className={`mt-12 text-center transition-all duration-1000 delay-800 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          <div className="flex items-center justify-center space-x-4 text-gray-400">
+            <Clock className="w-5 h-5" />
+            <span>Beta Phase: Active</span>
+            <div className="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></div>
+            <span>Full Launch: Q2 2024</span>
+          </div>
+        </div>
       </div>
     </section>
   );

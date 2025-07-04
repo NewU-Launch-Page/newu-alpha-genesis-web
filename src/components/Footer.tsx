@@ -1,89 +1,131 @@
 
-import { Separator } from '@/components/ui/separator';
+import { useState } from 'react';
+import { Heart, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
+  const [hoveredSocial, setHoveredSocial] = useState<string | null>(null);
+
+  const socialLinks = [
+    { name: 'Instagram', icon: '📸', url: '#', color: 'hover:text-pink-400' },
+    { name: 'YouTube', icon: '📺', url: '#', color: 'hover:text-red-400' },
+    { name: 'Discord', icon: '💬', url: '#', color: 'hover:text-indigo-400' },
+    { name: 'LinkedIn', icon: '💼', url: '#', color: 'hover:text-blue-400' }
+  ];
+
+  const quickLinks = [
+    { name: 'About', href: '#about' },
+    { name: 'Blog', href: '#blog' },
+    { name: 'Contact', href: '#contact' },
+    { name: 'Privacy Policy', href: '#privacy' }
+  ];
+
   return (
-    <footer className="border-t border-white/10 bg-black/20 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+    <footer className="relative py-16 px-6 lg:px-8 border-t border-white/10">
+      {/* Background Animation */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }}></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Brand Section */}
-          <div className="space-y-4">
+          <div className="space-y-4 animate-fade-in">
             <div className="flex items-center space-x-3">
               <img 
                 src="/lovable-uploads/fee49e0a-00a1-4376-8dd4-b98526fff769.png" 
                 alt="NewU Logo" 
-                className="h-10 w-10"
+                className="h-10 w-10 hover:rotate-12 transition-transform duration-300"
               />
-              <span className="text-2xl font-orbitron font-bold gradient-text">NewU</span>
+              <div className="flex items-center space-x-2">
+                <span className="text-2xl font-orbitron font-bold gradient-text">
+                  NewU
+                </span>
+                <span className="px-2 py-1 text-xs font-medium bg-gradient-to-r from-teal-500 to-blue-500 text-white rounded-full animate-pulse">
+                  BETA
+                </span>
+              </div>
             </div>
-            <p className="text-gray-400 text-sm">
-              India's First AI-Powered Fitness & Nutrition Assistant. Transform your health journey with cutting-edge technology.
+            <p className="text-gray-400 leading-relaxed">
+              India's First AI-Powered Fitness & Nutrition Assistant. 
+              Transform your health journey with intelligent technology.
             </p>
           </div>
 
-          {/* Pages */}
-          <div>
-            <h3 className="font-semibold text-white mb-4">Pages</h3>
+          {/* Quick Links */}
+          <div className="animate-fade-in" style={{ animationDelay: '0.1s' }}>
+            <h3 className="text-white font-orbitron font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li><a href="#about" className="text-gray-400 hover:text-white transition-colors">About</a></li>
-              <li><a href="/blog" className="text-gray-400 hover:text-white transition-colors">Blog</a></li>
-              <li><a href="#contact" className="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-              <li><a href="/privacy" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+              {quickLinks.map((link, index) => (
+                <li key={link.name}>
+                  <a 
+                    href={link.href}
+                    className="text-gray-400 hover:text-teal-400 transition-colors duration-300 hover:translate-x-1 inline-block"
+                    style={{ animationDelay: `${index * 0.05}s` }}
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Features */}
-          <div>
-            <h3 className="font-semibold text-white mb-4">Features</h3>
-            <ul className="space-y-2">
-              <li><span className="text-gray-400">AI Food Scanner</span></li>
-              <li><span className="text-gray-400">Smart Bill Analysis</span></li>
-              <li><span className="text-gray-400">Atman Chatbot</span></li>
-              <li><span className="text-gray-400">Workout Planner</span></li>
-            </ul>
-          </div>
-
-          {/* Contact & Social */}
-          <div>
-            <h3 className="font-semibold text-white mb-4">Connect</h3>
+          {/* Contact Info */}
+          <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <h3 className="text-white font-orbitron font-bold mb-4">Contact</h3>
             <div className="space-y-3">
-              <a href="mailto:support@newu.fit" className="text-gray-400 hover:text-white transition-colors block">
-                support@newu.fit
-              </a>
-              <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-teal-400 transition-colors">
-                  <span className="sr-only">Instagram</span>
-                  📷
-                </a>
-                <a href="#" className="text-gray-400 hover:text-red-400 transition-colors">
-                  <span className="sr-only">YouTube</span>
-                  📺
-                </a>
-                <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
-                  <span className="sr-only">Discord</span>
-                  🎮
-                </a>
-                <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                  <span className="sr-only">LinkedIn</span>
-                  💼
-                </a>
+              <div className="flex items-center space-x-3 text-gray-400 hover:text-teal-400 transition-colors duration-300 group">
+                <Mail className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
+                <span>support@newu.fit</span>
               </div>
+              <div className="flex items-center space-x-3 text-gray-400 hover:text-teal-400 transition-colors duration-300 group">
+                <Phone className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
+                <span>+91 xxx-xxx-xxxx</span>
+              </div>
+              <div className="flex items-center space-x-3 text-gray-400 hover:text-teal-400 transition-colors duration-300 group">
+                <MapPin className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
+                <span>India</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Social Links */}
+          <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <h3 className="text-white font-orbitron font-bold mb-4">Follow Us</h3>
+            <div className="flex space-x-4">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  className={`w-12 h-12 glass-card border-white/20 rounded-full flex items-center justify-center text-xl transition-all duration-300 hover:scale-110 hover:rotate-12 ${social.color}`}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                  onMouseEnter={() => setHoveredSocial(social.name)}
+                  onMouseLeave={() => setHoveredSocial(null)}
+                >
+                  <span className={hoveredSocial === social.name ? 'animate-bounce' : ''}>
+                    {social.icon}
+                  </span>
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
-        <Separator className="my-8 bg-white/10" />
-
         {/* Bottom Section */}
-        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <div className="text-gray-400 text-sm">
-            © 2024 NewU. All rights reserved.
-          </div>
-          <div className="flex items-center space-x-2 text-sm">
-            <span className="text-gray-400">Made with</span>
-            <span className="text-red-400">❤️</span>
-            <span className="text-gray-400">in India</span>
+        <div className="border-t border-white/10 pt-8">
+          <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+            <div className="flex items-center space-x-2 text-gray-400 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+              <span>© 2024 NewU. Made with</span>
+              <Heart className="w-4 h-4 text-red-400 animate-pulse" />
+              <span>in India</span>
+            </div>
+            
+            <div className="flex items-center space-x-6 text-gray-400 animate-fade-in" style={{ animationDelay: '0.5s' }}>
+              <a href="#" className="hover:text-teal-400 transition-colors duration-300">Terms</a>
+              <a href="#" className="hover:text-teal-400 transition-colors duration-300">Privacy</a>
+              <a href="#" className="hover:text-teal-400 transition-colors duration-300">Cookies</a>
+            </div>
           </div>
         </div>
       </div>
