@@ -19,6 +19,13 @@ const Footer = () => {
     { name: 'Privacy Policy', href: '#privacy' }
   ];
 
+  const contactEmails = [
+    'newu.fitapp@gmail.com',
+    'newu.help@gmail.com',
+    'newu.dev@gmail.com',
+    'newu.feedback1@gmail.com'
+  ];
+
   return (
     <footer className="relative py-16 px-6 lg:px-8 border-t border-white/10">
       {/* Background Animation */}
@@ -75,17 +82,21 @@ const Footer = () => {
           <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <h3 className="text-white font-orbitron font-bold mb-4">Contact</h3>
             <div className="space-y-3">
-              <div className="flex items-center space-x-3 text-gray-400 hover:text-teal-400 transition-colors duration-300 group">
-                <Mail className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
-                <span>support@newu.fit</span>
+              <div className="space-y-2">
+                {contactEmails.map((email, index) => (
+                  <div key={email} className="flex items-center space-x-3 text-gray-400 hover:text-teal-400 transition-colors duration-300 group">
+                    <Mail className="w-4 h-4 group-hover:scale-110 transition-transform duration-300 flex-shrink-0" />
+                    <a href={`mailto:${email}`} className="text-sm break-all">{email}</a>
+                  </div>
+                ))}
               </div>
               <div className="flex items-center space-x-3 text-gray-400 hover:text-teal-400 transition-colors duration-300 group">
                 <Phone className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
-                <span>+91 xxx-xxx-xxxx</span>
+                <a href="tel:+918190918754" className="text-sm">+91 8190918754</a>
               </div>
               <div className="flex items-center space-x-3 text-gray-400 hover:text-teal-400 transition-colors duration-300 group">
                 <MapPin className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
-                <span>India</span>
+                <span className="text-sm">India</span>
               </div>
             </div>
           </div>
@@ -93,7 +104,7 @@ const Footer = () => {
           {/* Social Links */}
           <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
             <h3 className="text-white font-orbitron font-bold mb-4">Follow Us</h3>
-            <div className="flex space-x-4">
+            <div className="flex flex-wrap gap-3">
               {socialLinks.map((social, index) => (
                 <a
                   key={social.name}

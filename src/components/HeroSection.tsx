@@ -10,6 +10,13 @@ const HeroSection = () => {
     setIsVisible(true);
   }, []);
 
+  const scrollToBetaForm = () => {
+    const betaForm = document.getElementById('beta-form');
+    if (betaForm) {
+      betaForm.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 lg:px-8">
       {/* Animated Background Elements */}
@@ -61,7 +68,10 @@ const HeroSection = () => {
         <div className={`flex flex-col sm:flex-row items-center justify-center gap-6 transition-all duration-1000 delay-800 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
-          <Button className="glow-button text-white font-semibold px-8 py-4 rounded-full text-lg group">
+          <Button 
+            onClick={scrollToBetaForm}
+            className="glow-button text-white font-semibold px-8 py-4 rounded-full text-lg group"
+          >
             Join Beta Now
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
           </Button>

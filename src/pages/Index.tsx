@@ -2,7 +2,9 @@
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import FeatureCarousel from '@/components/FeatureCarousel';
-import PricingSection from '@/components/PricingSection';
+import AtmanAISection from '@/components/AtmanAISection';
+import BetaFormSection from '@/components/BetaFormSection';
+import BetaBadgeSection from '@/components/BetaBadgeSection';
 import BetaInfoSection from '@/components/BetaInfoSection';
 import Footer from '@/components/Footer';
 
@@ -12,7 +14,9 @@ const Index = () => {
       <Navigation />
       <HeroSection />
       <FeatureCarousel />
-      <PricingSection />
+      <AtmanAISection />
+      <BetaFormSection />
+      <BetaBadgeSection />
       <BetaInfoSection />
       <Footer />
     </div>
