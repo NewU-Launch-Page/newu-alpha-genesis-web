@@ -2,6 +2,7 @@
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import FeatureCarousel from '@/components/FeatureCarousel';
+import MobileExperienceSection from '@/components/MobileExperienceSection';
 import AtmanAISection from '@/components/AtmanAISection';
 import BetaFormSection from '@/components/BetaFormSection';
 import BetaBadgeSection from '@/components/BetaBadgeSection';
@@ -14,6 +15,7 @@ const Index = () => {
       <Navigation />
       <HeroSection />
       <FeatureCarousel />
+      <MobileExperienceSection />
       <AtmanAISection />
       <BetaFormSection />
       <BetaBadgeSection />
