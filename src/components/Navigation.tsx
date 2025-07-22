@@ -58,8 +58,8 @@ const Navigation = () => {
                 <a href="#features" className="text-gray-300 hover:text-white transition-colors duration-300">
                   Features
                 </a>
-                <a href="#pricing" className="text-gray-300 hover:text-white transition-colors duration-300">
-                  Pricing
+                <a href="#mobile-experience" className="text-gray-300 hover:text-white transition-colors duration-300">
+                  Mobile App
                 </a>
                 <a href="#about" className="text-gray-300 hover:text-white transition-colors duration-300">
                   About
@@ -107,16 +107,16 @@ const Navigation = () => {
           <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
           <div className="fixed top-20 left-4 right-4 glass-card rounded-2xl p-6">
             <div className="flex flex-col space-y-4">
-              <a href="#features" className="text-gray-300 hover:text-white transition-colors duration-300 py-2">
+              <a href="#features" className="text-gray-300 hover:text-white transition-colors duration-300 py-2" onClick={() => setIsMobileMenuOpen(false)}>
                 Features
               </a>
-              <a href="#pricing" className="text-gray-300 hover:text-white transition-colors duration-300 py-2">
-                Pricing
+              <a href="#mobile-experience" className="text-gray-300 hover:text-white transition-colors duration-300 py-2" onClick={() => setIsMobileMenuOpen(false)}>
+                Mobile App
               </a>
-              <a href="#about" className="text-gray-300 hover:text-white transition-colors duration-300 py-2">
+              <a href="#about" className="text-gray-300 hover:text-white transition-colors duration-300 py-2" onClick={() => setIsMobileMenuOpen(false)}>
                 About
               </a>
-              <a href="#contact" className="text-gray-300 hover:text-white transition-colors duration-300 py-2">
+              <a href="#contact" className="text-gray-300 hover:text-white transition-colors duration-300 py-2" onClick={() => setIsMobileMenuOpen(false)}>
                 Contact
               </a>
               <div className="pt-4 border-t border-white/20">

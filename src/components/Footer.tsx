@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import { Heart, Mail, Phone, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const [hoveredSocial, setHoveredSocial] = useState<string | null>(null);
@@ -15,14 +16,12 @@ const Footer = () => {
   const quickLinks = [
     { name: 'About', href: '#about' },
     { name: 'Blog', href: '#blog' },
-    { name: 'Contact', href: '#contact' },
-    { name: 'Privacy Policy', href: '#privacy' }
+    { name: 'Contact', href: '#contact' }
   ];
 
   const contactEmails = [
     'newu.fitapp@gmail.com',
     'newu.help@gmail.com',
-    'newu.dev@gmail.com',
     'newu.feedback1@gmail.com'
   ];
 
@@ -133,8 +132,12 @@ const Footer = () => {
             </div>
             
             <div className="flex items-center space-x-6 text-gray-400 animate-fade-in" style={{ animationDelay: '0.5s' }}>
-              <a href="#" className="hover:text-teal-400 transition-colors duration-300">Terms</a>
-              <a href="#" className="hover:text-teal-400 transition-colors duration-300">Privacy</a>
+              <Link to="/terms" className="hover:text-teal-400 transition-colors duration-300">
+                Terms & Conditions
+              </Link>
+              <Link to="/privacy" className="hover:text-teal-400 transition-colors duration-300">
+                Privacy Policy
+              </Link>
               <a href="#" className="hover:text-teal-400 transition-colors duration-300">Cookies</a>
             </div>
           </div>

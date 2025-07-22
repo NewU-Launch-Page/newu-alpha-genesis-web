@@ -7,6 +7,7 @@ import AtmanAISection from '@/components/AtmanAISection';
 import BetaFormSection from '@/components/BetaFormSection';
 import BetaBadgeSection from '@/components/BetaBadgeSection';
 import BetaInfoSection from '@/components/BetaInfoSection';
+import FAQSection from '@/components/FAQSection';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -20,6 +21,7 @@ const Index = () => {
       <BetaFormSection />
       <BetaBadgeSection />
       <BetaInfoSection />
+      <FAQSection />
       <Footer />
     </div>
   );
