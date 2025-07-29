@@ -24,6 +24,22 @@ const Navigation = () => {
     setIsMobileMenuOpen(false);
   };
 
+  const scrollToFAQs = () => {
+    const faqSection = document.querySelector('#faq-section');
+    if (faqSection) {
+      faqSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
+  const scrollToContact = () => {
+    const footer = document.querySelector('footer');
+    if (footer) {
+      footer.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -61,22 +77,22 @@ const Navigation = () => {
                 <a href="#mobile-experience" className="text-gray-300 hover:text-white transition-colors duration-300">
                   Mobile App
                 </a>
-                <a href="#about" className="text-gray-300 hover:text-white transition-colors duration-300">
-                  About
-                </a>
-                <a href="#contact" className="text-gray-300 hover:text-white transition-colors duration-300">
+                <button 
+                  onClick={scrollToFAQs}
+                  className="text-gray-300 hover:text-white transition-colors duration-300"
+                >
+                  FAQs
+                </button>
+                <button 
+                  onClick={scrollToContact}
+                  className="text-gray-300 hover:text-white transition-colors duration-300"
+                >
                   Contact
-                </a>
+                </button>
               </div>
 
-              {/* Desktop CTA Buttons */}
-              <div className="hidden sm:flex items-center space-x-2 sm:space-x-4">
-                <Button 
-                  variant="ghost" 
-                  className="hidden md:inline-flex text-gray-300 hover:text-white hover:bg-white/10 text-sm"
-                >
-                  Sign In
-                </Button>
+              {/* Desktop CTA Button */}
+              <div className="hidden sm:flex items-center">
                 <Button 
                   onClick={scrollToBetaForm}
                   className="glow-button text-white font-semibold px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base"
@@ -113,19 +129,19 @@ const Navigation = () => {
               <a href="#mobile-experience" className="text-gray-300 hover:text-white transition-colors duration-300 py-2" onClick={() => setIsMobileMenuOpen(false)}>
                 Mobile App
               </a>
-              <a href="#about" className="text-gray-300 hover:text-white transition-colors duration-300 py-2" onClick={() => setIsMobileMenuOpen(false)}>
-                About
-              </a>
-              <a href="#contact" className="text-gray-300 hover:text-white transition-colors duration-300 py-2" onClick={() => setIsMobileMenuOpen(false)}>
+              <button 
+                onClick={scrollToFAQs}
+                className="text-gray-300 hover:text-white transition-colors duration-300 py-2 text-left"
+              >
+                FAQs
+              </button>
+              <button 
+                onClick={scrollToContact}
+                className="text-gray-300 hover:text-white transition-colors duration-300 py-2 text-left"
+              >
                 Contact
-              </a>
+              </button>
               <div className="pt-4 border-t border-white/20">
-                <Button 
-                  variant="ghost" 
-                  className="w-full text-gray-300 hover:text-white hover:bg-white/10 mb-3"
-                >
-                  Sign In
-                </Button>
                 <Button 
                   onClick={scrollToBetaForm}
                   className="w-full glow-button text-white font-semibold py-3 rounded-full"

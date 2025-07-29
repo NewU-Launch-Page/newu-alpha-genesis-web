@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Clock, Users, Zap } from 'lucide-react';
+import { Clock, Users } from 'lucide-react';
 
 interface TimeLeft {
   days: number;
@@ -12,7 +12,7 @@ interface TimeLeft {
 const CountdownSection = () => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [isVisible, setIsVisible] = useState(false);
-  const [seatsLeft, setSeatsLeft] = useState(300); // Starting with 300 seats left out of 1500
+  const [spotsFilledCount, setSpotsFilledCount] = useState(1237); // Starting with 1237 spots filled
 
   // Target date: August 5, 2025
   const targetDate = new Date('2025-08-05T00:00:00').getTime();
@@ -113,23 +113,18 @@ const CountdownSection = () => {
               </span>
             </div>
             
-            <div className="flex items-center justify-center space-x-4 mb-6">
-              <Zap className="w-6 h-6 text-yellow-400 animate-pulse" />
-              <span className="text-xl md:text-2xl text-orange-400 font-semibold">
-                🚀 Hurry! Only <span className="text-white font-bold">{seatsLeft}</span> Beta Access Invites Remaining
+            <div className="mb-6">
+              <span className="text-xl md:text-2xl text-teal-400 font-semibold">
+                <span className="font-bold text-white">{spotsFilledCount}</span> out of 1,500 Beta Spots Filled
               </span>
             </div>
 
             <div className="w-full bg-gray-700 rounded-full h-4 mb-4">
               <div 
                 className="bg-gradient-to-r from-teal-500 to-blue-500 h-4 rounded-full transition-all duration-500"
-                style={{ width: `${((1500 - seatsLeft) / 1500) * 100}%` }}
+                style={{ width: `${(spotsFilledCount / 1500) * 100}%` }}
               />
             </div>
-            
-            <p className="text-gray-400">
-              <span className="font-semibold text-white">{1500 - seatsLeft}</span> out of 1500 seats claimed
-            </p>
           </div>
         </div>
       </div>

@@ -65,27 +65,6 @@ const BetaFormSection = () => {
             </div>
           </CardContent>
         </Card>
-
-        {/* Migration Notice */}
-        <div className={`mt-12 transition-all duration-1000 delay-400 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}>
-          <Card className="glass-card border-amber-500/20">
-            <CardContent className="p-6">
-              <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center flex-shrink-0 mt-1">
-                  <span className="text-amber-400 text-lg">ℹ️</span>
-                </div>
-                <div>
-                  <h3 className="text-lg font-orbitron font-bold text-white mb-2">User Migration Notice</h3>
-                  <p className="text-gray-300">
-                    We are gradually migrating existing users to this new platform. Your data and progress will be preserved during the transition after the launch of the official app.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
       </div>
     </section>
   );

@@ -12,7 +12,6 @@ interface TimeLeft {
 const FloatingCountdownWidget = () => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [isVisible, setIsVisible] = useState(true);
-  const [seatsLeft, setSeatsLeft] = useState(300);
   const [isMinimized, setIsMinimized] = useState(false);
 
   // Target date: August 5, 2025
@@ -76,25 +75,13 @@ const FloatingCountdownWidget = () => {
               </button>
             </div>
             
-            <div className="mb-3">
+            <div className="mb-4">
               <div className="flex items-center space-x-1 text-xs text-gray-300 mb-1">
                 <Clock className="w-3 h-3" />
                 <span>⏳ Time Left:</span>
               </div>
               <div className="text-sm font-mono text-teal-400">
                 {formatNumber(timeLeft.days)}d {formatNumber(timeLeft.hours)}h {formatNumber(timeLeft.minutes)}m {formatNumber(timeLeft.seconds)}s
-              </div>
-            </div>
-            
-            <div className="mb-3">
-              <div className="text-xs text-orange-400 mb-1">
-                🎫 Only <span className="font-bold text-white">{seatsLeft}</span> Seats Left
-              </div>
-              <div className="w-full bg-gray-700 rounded-full h-2">
-                <div 
-                  className="bg-gradient-to-r from-teal-500 to-blue-500 h-2 rounded-full transition-all duration-500"
-                  style={{ width: `${((1500 - seatsLeft) / 1500) * 100}%` }}
-                />
               </div>
             </div>
             

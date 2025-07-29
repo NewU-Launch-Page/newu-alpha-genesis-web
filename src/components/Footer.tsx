@@ -7,10 +7,10 @@ const Footer = () => {
   const [hoveredSocial, setHoveredSocial] = useState<string | null>(null);
 
   const socialLinks = [
-    { name: 'Instagram', icon: '📸', url: '#', color: 'hover:text-pink-400' },
+    { name: 'Instagram', icon: '📸', url: 'https://instagram.com/your-instagram', color: 'hover:text-pink-400' },
+    { name: 'LinkedIn', icon: '💼', url: 'https://linkedin.com/in/your-linkedin', color: 'hover:text-blue-400' },
     { name: 'YouTube', icon: '📺', url: '#', color: 'hover:text-red-400' },
-    { name: 'Discord', icon: '💬', url: '#', color: 'hover:text-indigo-400' },
-    { name: 'LinkedIn', icon: '💼', url: '#', color: 'hover:text-blue-400' }
+    { name: 'Discord', icon: '💬', url: '#', color: 'hover:text-indigo-400' }
   ];
 
   const quickLinks = [
@@ -108,6 +108,8 @@ const Footer = () => {
                 <a
                   key={social.name}
                   href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`w-12 h-12 glass-card border-white/20 rounded-full flex items-center justify-center text-xl transition-all duration-300 hover:scale-110 hover:rotate-12 ${social.color}`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                   onMouseEnter={() => setHoveredSocial(social.name)}
